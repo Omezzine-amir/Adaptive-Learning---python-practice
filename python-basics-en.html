@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Python Basics Practice - Adaptive Learning Platform</title>
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      margin: 0; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #111; 
+    }
+    header { 
+      background: white;
+      padding: 24px 28px; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header h1 { 
+      margin: 0 0 8px; 
+      font-size: 24px; 
+      color: #667eea;
+      font-weight: 700;
+    }
+    header p { 
+      margin: 0; 
+      font-size: 14px; 
+      color: #555; 
+    }
+    .wrap { 
+      display: grid; 
+      grid-template-columns: 380px 1fr; 
+      gap: 20px; 
+      padding: 20px 28px; 
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    .card { 
+      background: white;
+      border-radius: 16px; 
+      padding: 20px; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .muted { 
+      color: #666; 
+      font-size: 12px; 
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .row { 
+      display: flex; 
+      gap: 12px; 
+      flex-wrap: wrap; 
+      align-items: center; 
+    }
+    select, button, input[type="text"] {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 13px;
+      padding: 10px 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      background: #fff;
+      transition: all 0.3s;
+    }
+    select:focus, input[type="text"]:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    button { 
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    button.primary { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff; 
+      border: none;
+    }
+    button.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+    button.ghost { 
+      background: #fff;
+      border: 2px solid #667eea;
+      color: #667eea;
+    }
+    button.ghost:hover {
+      background: #f8f9ff;
+    }
+    button:disabled { 
+      opacity: 0.5; 
+      cursor: not-allowed; 
+      transform: none !important;
+    }
+    textarea {
+      width: 100%;
+      min-height: 350px;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      padding: 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      resize: vertical;
+      background: #f8f9fa;
+      transition: border-color 0.3s;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      background: white;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 16px;
+      border-radius: 12px;
+      overflow: auto;
+      min-height: 140px;
+      margin: 12px 0 0;
+      font-size: 13px;
+      line-height: 1.5;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    }
+    details { 
+      margin-top: 16px; 
+      border-top: 1px solid #e8e8e8;
+      padding-top: 16px;
+    }
+    details summary { 
+      cursor: pointer; 
+      font-weight: 700;
+      color: #333;
+      padding: 8px 0;
+      user-select: none;
+    }
+    details summary:hover {
+      color: #667eea;
+    }
+    .pill { 
+      display:inline-block; 
+      padding: 4px 12px; 
+      border: 2px solid #e3e3e3; 
+      border-radius: 999px; 
+      font-size: 11px; 
+      color: #555;
+      font-weight: 600;
+      background: white;
+    }
+    .ok { 
+      color: #10b981; 
+      font-weight: 700; 
+    }
+    .bad { 
+      color: #ef4444; 
+      font-weight: 700; 
+    }
+    .statusline { 
+      margin-top: 8px; 
+      font-size: 13px; 
+    }
+    .tiny { 
+      font-size: 12px; 
+      color: #666; 
+      line-height: 1.6;
+    }
+    .kpi { 
+      display:flex; 
+      gap: 10px; 
+      flex-wrap: wrap; 
+      margin-top: 10px; 
+    }
+    .kpi .pill { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 12px;
+    }
+    .nav-btn {
+      background: #f8f9fa;
+      border: 2px solid #e0e0e0;
+      color: #333;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .nav-btn:hover {
+      background: white;
+      border-color: #667eea;
+      color: #667eea;
+    }
+    @media (max-width: 1024px) {
+      .wrap { 
+        grid-template-columns: 1fr; 
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+</head>
+
+<body>
+<header>
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <h1>🐍 Python Foundations: Basics Practice</h1>
+      <p>Interactive learning with instant feedback • Estimated time: 20 minutes</p>
+    </div>
+    <a href="index.html" class="nav-btn">← Back to Home</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- LEFT: lesson + exercise list -->
+  <section class="card">
+    <div class="row" style="justify-content: space-between;">
+      <div>
+        <div class="muted">Environment Status</div>
+        <div id="pyStatus" class="statusline"><span class="pill">Loading Python…</span></div>
+      </div>
+      <div class="kpi">
+        <span class="pill" id="kpiExercise">Exercise: 1/6</span>
+        <span class="pill" id="kpiScore">✓ Passed: 0</span>
+      </div>
+    </div>
+
+    <details open>
+      <summary>📖 Mini-Lesson (10 min read)</summary>
+      <div class="tiny" style="margin-top:12px;">
+        <p style="margin-bottom: 12px;"><b>1) Printing Output</b><br/>Use <code>print()</code> to display text or values.</p>
+        <p style="margin-bottom: 12px;"><b>2) Variables</b><br/>Store values using <code>=</code>. Example: <code>x = 3</code></p>
+        <p style="margin-bottom: 12px;"><b>3) Strings</b><br/>Text in quotes: <code>"hello"</code>. Combine with <code>+</code></p>
+        <p style="margin-bottom: 12px;"><b>4) If Statements</b><br/>
+          <code>if condition:</code> executes indented code when true.
+        </p>
+        <p style="margin-bottom: 12px;"><b>5) Loops</b><br/>
+          <code>for i in range(5):</code> repeats 5 times (0 to 4).
+        </p>
+        <p style="margin-bottom: 12px;"><b>6) Functions</b><br/>
+          Reusable code blocks: <code>def add(a,b): return a+b</code>
+        </p>
+        <p style="background: #fff3cd; padding: 12px; border-radius: 8px; border-left: 4px solid #ffc107;"><b>💡 Pro Tip:</b> Python uses indentation (4 spaces) to define code blocks.</p>
+      </div>
+    </details>
+
+    <details open>
+      <summary>🎯 Exercise Selection</summary>
+      <div style="margin-top:12px;">
+        <label class="muted" for="exerciseSelect">Choose Exercise</label><br/>
+        <select id="exerciseSelect" style="width: 100%; margin-top: 8px;"></select>
+        <div class="tiny" id="exerciseGoal" style="margin-top:12px; background: #f0f9ff; padding: 12px; border-radius: 8px; border-left: 4px solid #3b82f6;"></div>
+        <div class="row" style="margin-top:12px;">
+          <button class="ghost" id="btnLoad">📝 Load Starter</button>
+          <button class="ghost" id="btnReveal">💡 Show Solution</button>
+        </div>
+        <p class="muted" style="margin-top:12px; background: #f8f9fa; padding: 10px; border-radius: 6px;">
+          ℹ️ This is a practice environment. Not graded.
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>📝 Quick Self-Check Quiz</summary>
+      <div class="tiny" style="margin-top:12px;">
+        <p style="margin-bottom: 10px;"><b>Q1.</b> What does <code>range(3)</code> produce in a loop?</p>
+        <label style="display: block; margin: 6px 0;"><input type="radio" name="q1" value="a"> 1, 2, 3</label>
+        <label style="display: block; margin: 6px 0;"><input type="radio" name="q1" value="b"> 0, 1, 2 ✓</label>
+        <label style="display: block; margin: 6px 0;"><input type="radio" name="q1" value="c"> 0, 1, 2, 3</label>
+        <button class="ghost" id="btnMCQ" style="margin-top:10px;">Check Answer</button>
+        <div id="mcqResult" class="tiny" style="margin-top:8px;"></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- RIGHT: editor + run/check -->
+  <section class="card">
+    <div class="row" style="justify-content: space-between; margin-bottom: 16px;">
+      <div>
+        <div class="muted">Code Editor</div>
+        <div class="tiny" id="exerciseTitle" style="margin-top:6px; font-weight: 600; color: #333;"></div>
+      </div>
+      <div class="row">
+        <button id="btnRun" class="primary" disabled>▶ Run Code</button>
+        <button id="btnCheck" class="ghost" disabled>✓ Check Solution</button>
+        <button id="btnReset" class="ghost" disabled>↺ Reset</button>
+      </div>
+    </div>
+
+    <textarea id="codeArea" spellcheck="false" placeholder="Write your Python code here..."></textarea>
+
+    <div class="row" style="justify-content: space-between; margin-top: 16px;">
+      <div class="muted">Output Console</div>
+      <div class="tiny" id="checkResult"></div>
+    </div>
+    <pre id="outputArea">Initializing Python environment...</pre>
+
+    <div class="tiny" style="margin-top: 14px; background: #fef3c7; padding: 12px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+      <b>🐛 Debugging Tips:</b> If you see an error, read the last line first. Common issues: missing quotes, missing colons (:), or incorrect indentation.
+    </div>
+  </section>
+</div>
+
+<script>
+  // -----------------------------
+  // Exercises (20-min set)
+  // -----------------------------
+  const EXERCISES = [
+    {
+      id: "ex1",
+      title: "Exercise 1: Print a Welcome Message",
+      goal: "🎯 Goal: Print exactly: Hello, Python!",
+      starter: "# Print exactly: Hello, Python!\n\n",
+      solution: "print(\"Hello, Python!\")\n",
+      testPy: `
+expected = "Hello, Python!\\n"
+passed = (stdout == expected)
+msg = "Expected exactly: Hello, Python!"`,
+    },
+    {
+      id: "ex2",
+      title: "Exercise 2: Variables and Arithmetic",
+      goal: "🎯 Goal: Create variables a=7 and b=5, then print their sum (12).",
+      starter: "# Create a=7, b=5, then print a+b\n\n",
+      solution: "a = 7\nb = 5\nprint(a + b)\n",
+      testPy: `
+expected = "12\\n"
+passed = (stdout == expected)
+msg = "Expected output: 12"`,
+    },
+    {
+      id: "ex3",
+      title: "Exercise 3: String Concatenation",
+      goal: "🎯 Goal: Create name = \"Amir\" then print: Welcome Amir",
+      starter: "# Create name = \"Amir\"\n# Then print: Welcome Amir\n\n",
+      solution: "name = \"Amir\"\nprint(\"Welcome \" + name)\n",
+      testPy: `
+expected = "Welcome Amir\\n"
+passed = (stdout == expected)
+msg = "Expected output: Welcome Amir"`,
+    },
+    {
+      id: "ex4",
+      title: "Exercise 4: Conditional Statement",
+      goal: "🎯 Goal: If score >= 60 print PASS else print FAIL. Use score = 75.",
+      starter: "# Use score = 75\n# If score >= 60 print PASS else print FAIL\n\nscore = 75\n",
+      solution: "score = 75\nif score >= 60:\n    print(\"PASS\")\nelse:\n    print(\"FAIL\")\n",
+      testPy: `
+expected = "PASS\\n"
+passed = (stdout == expected)
+msg = "Expected output: PASS"`,
+    },
+    {
+      id: "ex5",
+      title: "Exercise 5: For Loop",
+      goal: "🎯 Goal: Print numbers 1 to 5, each on its own line.",
+      starter: "# Print 1,2,3,4,5 each on a new line\n\n",
+      solution: "for i in range(1, 6):\n    print(i)\n",
+      testPy: `
+expected = "1\\n2\\n3\\n4\\n5\\n"
+passed = (stdout == expected)
+msg = "Expected five lines: 1 through 5"`,
+    },
+    {
+      id: "ex6",
+      title: "Exercise 6: Function Definition",
+      goal: "🎯 Goal: Write function add(a,b) that returns a+b, then print add(3,4).",
+      starter: "# Define add(a,b) that returns a+b\n# Then print add(3,4)\n\n",
+      solution: "def add(a, b):\n    return a + b\n\nprint(add(3, 4))\n",
+      testPy: `
+expected = "7\\n"
+passed = (stdout == expected)
+msg = "Expected output: 7"`,
+    },
+  ];
+
+  let pyodide = null;
+  let currentIdx = 0;
+  let passedChecks = 0;
+
+  const el = (id) => document.getElementById(id);
+
+  function setStatus(html) { el("pyStatus").innerHTML = html; }
+  function setOutput(text) { el("outputArea").textContent = text; }
+  function setCheck(text, ok=null) {
+    if (ok === true) el("checkResult").innerHTML = "<span class=\"ok\">✓ " + text + "</span>";
+    else if (ok === false) el("checkResult").innerHTML = "<span class=\"bad\">✗ " + text + "</span>";
+    else el("checkResult").textContent = text;
+  }
+
+  function populateExercises() {
+    const sel = el("exerciseSelect");
+    sel.innerHTML = "";
+    EXERCISES.forEach((ex, i) => {
+      const opt = document.createElement("option");
+      opt.value = String(i);
+      opt.textContent = (i+1) + ". " + ex.title.replace("Exercise " + (i+1) + ": ", "");
+      sel.appendChild(opt);
+    });
+  }
+
+  function loadExercise(idx, fromReset=false) {
+    currentIdx = idx;
+    const ex = EXERCISES[idx];
+    el("exerciseSelect").value = String(idx);
+    el("exerciseTitle").textContent = ex.title;
+    el("exerciseGoal").innerHTML = ex.goal;
+    el("kpiExercise").textContent = "Exercise: " + (idx+1) + "/" + EXERCISES.length;
+    if (!fromReset) {
+      el("codeArea").value = ex.starter;
+      setOutput("");
+      setCheck("");
+    }
+  }
+
+  function resetToStarter() {
+    const ex = EXERCISES[currentIdx];
+    el("codeArea").value = ex.starter;
+    setOutput("");
+    setCheck("");
+  }
+
+  function revealSolution() {
+    const ex = EXERCISES[currentIdx];
+    el("codeArea").value = ex.solution;
+    setOutput("Solution loaded. Click Run to see the output.");
+    setCheck("");
+  }
+
+  async function runUserCode(code) {
+    const wrapper = "import sys, io, traceback\n_user_stdout = io.StringIO()\n_user_stderr = io.StringIO()\n_old_out, _old_err = sys.stdout, sys.stderr\nsys.stdout, sys.stderr = _user_stdout, _user_stderr\n_ns = {}\ntry:\n    exec(user_code, _ns, _ns)\nexcept Exception:\n    traceback.print_exc()\nfinally:\n    sys.stdout, sys.stderr = _old_out, _old_err\nstdout = _user_stdout.getvalue()\nstderr = _user_stderr.getvalue()";
+    pyodide.globals.set("user_code", code);
+    await pyodide.runPythonAsync(wrapper);
+    const stdout = pyodide.globals.get("stdout");
+    const stderr = pyodide.globals.get("stderr");
+    return { stdout, stderr };
+  }
+
+  async function runButton() {
+    setCheck("");
+    setOutput("⏳ Running your code...");
+    const code = el("codeArea").value;
+    const result = await runUserCode(code);
+    const out = (result.stdout || "") + (result.stderr ? "\n" + result.stderr : "");
+    setOutput(out.trim() ? out : "(no output)");
+  }
+
+  async function checkButton() {
+    setCheck("⏳ Checking your solution...");
+    const ex = EXERCISES[currentIdx];
+    const code = el("codeArea").value;
+
+    const result = await runUserCode(code);
+    if (result.stderr && result.stderr.trim().length > 0) {
+      setOutput(((result.stdout||"") + "\n" + result.stderr).trim());
+      setCheck("Please fix the error first, then check again.", false);
+      return;
+    }
+
+    const testWrapper = "stdout = \"\"\npassed = False\nmsg = \"\"\nstdout = captured_stdout\n" + ex.testPy;
+    pyodide.globals.set("captured_stdout", result.stdout);
+    await pyodide.runPythonAsync(testWrapper);
+    const passed = pyodide.globals.get("passed");
+    const msg = pyodide.globals.get("msg");
+
+    if (passed) {
+      passedChecks += 1;
+      el("kpiScore").textContent = "✓ Passed: " + passedChecks;
+      setCheck("Perfect! Your solution is correct! 🎉", true);
+    } else {
+      setCheck(msg || "Not quite right. Try again!", false);
+    }
+  }
+
+  async function initPyodide() {
+    setStatus("<span class=\"pill\">⏳ Loading...</span>");
+    setOutput("⏳ Loading Python runtime (Pyodide)...\nThis may take a few seconds on first load.");
+    pyodide = await loadPyodide();
+    setStatus("<span class=\"pill\" style=\"background: #10b981; color: white; border: none;\">✓ Ready</span> <span class=\"muted\">Python in Browser</span>");
+    setOutput("✓ Python environment ready!\n\nChoose an exercise, load starter code, then click 'Run Code' to begin.");
+
+    el("btnRun").disabled = false;
+    el("btnCheck").disabled = false;
+    el("btnReset").disabled = false;
+  }
+
+  function checkMCQ() {
+    const radios = document.querySelectorAll('input[name="q1"]');
+    let picked = null;
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        picked = radios[i].value;
+        break;
+      }
+    }
+    if (!picked) { el("mcqResult").textContent = "Please select an option."; return; }
+    el("mcqResult").innerHTML = (picked === "b")
+      ? "<span class=\"ok\">✓ Correct!</span> range(3) produces 0, 1, 2."
+      : "<span class=\"bad\">✗ Incorrect.</span> In Python, range(3) produces 0, 1, 2.";
+  }
+
+  populateExercises();
+  loadExercise(0);
+
+  el("exerciseSelect").addEventListener("change", function(e) { loadExercise(Number(e.target.value)); });
+  el("btnLoad").addEventListener("click", function() { el("codeArea").value = EXERCISES[currentIdx].starter; setOutput(""); setCheck(""); });
+  el("btnReveal").addEventListener("click", revealSolution);
+  el("btnRun").addEventListener("click", runButton);
+  el("btnCheck").addEventListener("click", checkButton);
+  el("btnReset").addEventListener("click", resetToStarter);
+  el("btnMCQ").addEventListener("click", checkMCQ);
+
+  initPyodide();
+</script>
+</body>
+</html>
