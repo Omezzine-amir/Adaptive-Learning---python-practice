@@ -1,395 +1,201 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Python Basics Practice (20 min)</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #ffffff; color: #111; }
-    header { padding: 18px 22px; border-bottom: 1px solid #e8e8e8; }
-    header h1 { margin: 0 0 6px; font-size: 18px; }
-    header p { margin: 0; font-size: 13px; color: #444; }
-    .wrap { display: grid; grid-template-columns: 360px 1fr; gap: 16px; padding: 16px 22px; }
-    .card { border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; }
-    .muted { color: #666; font-size: 12px; }
-    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-    select, button, input[type="text"] {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      padding: 8px 10px;
-      border: 1px solid #d9d9d9;
-      border-radius: 8px;
-      background: #fff;
-    }
-    button { cursor: pointer; }
-    button.primary { background: #111; color: #fff; border-color: #111; }
-    button.ghost { background: #fff; }
-    button:disabled { opacity: 0.6; cursor: not-allowed; }
-    textarea {
-      width: 100%;
-      min-height: 320px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 13px;
-      line-height: 1.45;
-      padding: 12px;
-      border: 1px solid #d9d9d9;
-      border-radius: 10px;
-      resize: vertical;
-    }
-    pre {
-      background: #0b0b0b;
-      color: #eaeaea;
-      padding: 12px;
-      border-radius: 10px;
-      overflow: auto;
-      min-height: 120px;
-      margin: 10px 0 0;
-      font-size: 12px;
-      line-height: 1.4;
-    }
-    details { margin-top: 10px; }
-    details summary { cursor: pointer; font-weight: 600; }
-    .pill { display:inline-block; padding: 2px 8px; border: 1px solid #e3e3e3; border-radius: 999px; font-size: 11px; color: #444; }
-    .ok { color: #0a7a2f; font-weight: 700; }
-    .bad { color: #b00020; font-weight: 700; }
-    .statusline { margin-top: 10px; font-size: 13px; }
-    .tiny { font-size: 11px; color: #666; }
-    .kpi { display:flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-    .kpi .pill { background: #fafafa; }
-    @media (max-width: 980px) {
-      .wrap { grid-template-columns: 1fr; }
-    }
-  </style>
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Learning Platform - Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            text-align: left;
+        }
+        
+        .feature {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .feature h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .language-selector {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .lang-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 50px;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            min-width: 200px;
+        }
+        
+        .lang-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.6);
+        }
+        
+        .lang-flag {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .lang-name {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .info-box h3 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+        
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 40px 25px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-<header>
-  <h1>Python Foundations 1: Basics Practice (20 minutes)</h1>
-  <p>Read the mini-lesson, then complete short coding tasks. Use <span class="pill">Run</span> to execute code and <span class="pill">Check</span> to validate your answer.</p>
-</header>
-
-<div class="wrap">
-  <!-- LEFT: lesson + exercise list -->
-  <section class="card">
-    <div class="row" style="justify-content: space-between;">
-      <div>
-        <div class="muted">Environment</div>
-        <div id="pyStatus" class="statusline"><span class="pill">Loading Python…</span></div>
-      </div>
-      <div class="kpi">
-        <span class="pill" id="kpiExercise">Exercise: 1/6</span>
-        <span class="pill" id="kpiScore">Checks passed: 0</span>
-      </div>
-    </div>
-
-    <details open>
-      <summary>Mini-lesson (read in ~10 minutes)</summary>
-      <div class="tiny" style="margin-top:8px;">
-        <p><b>1) Printing</b><br/>Use <code>print()</code> to show output.</p>
-        <p><b>2) Variables</b><br/>Assign with <code>=</code>. Example: <code>x = 3</code></p>
-        <p><b>3) Strings</b><br/>Text is in quotes: <code>"hello"</code>. Combine with <code>+</code>.</p>
-        <p><b>4) If statements</b><br/>
-          <code>if condition:</code> then indented code runs.
-        </p>
-        <p><b>5) Loops</b><br/>
-          <code>for i in range(5):</code> runs 5 times (0 to 4).
-        </p>
-        <p><b>6) Functions</b><br/>
-          Define reusable logic: <code>def add(a,b): return a+b</code>
-        </p>
-        <p class="muted">Tip: Python cares about indentation. Use 4 spaces.</p>
-      </div>
-    </details>
-
-    <details open>
-      <summary>Choose exercise</summary>
-      <div style="margin-top:10px;">
-        <label class="muted" for="exerciseSelect">Exercise</label><br/>
-        <select id="exerciseSelect"></select>
-        <div class="tiny" id="exerciseGoal" style="margin-top:10px;"></div>
-        <div class="row" style="margin-top:10px;">
-          <button class="ghost" id="btnLoad">Load starter code</button>
-          <button class="ghost" id="btnReveal">Reveal solution</button>
+    <div class="container">
+        <div class="logo">🐍</div>
+        <h1>Adaptive Learning Platform</h1>
+        <p class="subtitle">Master Python Programming at Your Own Pace<br>Interactive exercises with instant feedback</p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">💻</div>
+                <h3>Interactive Coding</h3>
+                <p>Write and execute Python code directly in your browser</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">✅</div>
+                <h3>Instant Feedback</h3>
+                <p>Get immediate validation on your solutions</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📚</div>
+                <h3>Structured Learning</h3>
+                <p>Progress through carefully designed exercises</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌍</div>
+                <h3>Multi-Language</h3>
+                <p>Available in English and French</p>
+            </div>
         </div>
-        <p class="muted" style="margin-top:10px;">
-          This practice page is for learning. It is not graded.
-        </p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Optional: quick self-check (multiple choice)</summary>
-      <div class="tiny" style="margin-top:10px;">
-        <p><b>Q1.</b> What does <code>range(3)</code> produce in a loop?</p>
-        <label><input type="radio" name="q1" value="a"> 1, 2, 3</label><br/>
-        <label><input type="radio" name="q1" value="b"> 0, 1, 2</label><br/>
-        <label><input type="radio" name="q1" value="c"> 0, 1, 2, 3</label><br/>
-        <button class="ghost" id="btnMCQ" style="margin-top:8px;">Check MCQ</button>
-        <div id="mcqResult" class="tiny" style="margin-top:6px;"></div>
-      </div>
-    </details>
-  </section>
-
-  <!-- RIGHT: editor + run/check -->
-  <section class="card">
-    <div class="row" style="justify-content: space-between;">
-      <div>
-        <div class="muted">Code editor</div>
-        <div class="tiny" id="exerciseTitle" style="margin-top:4px;"></div>
-      </div>
-      <div class="row">
-        <button id="btnRun" class="primary" disabled>Run</button>
-        <button id="btnCheck" class="ghost" disabled>Check</button>
-        <button id="btnReset" class="ghost" disabled>Reset</button>
-      </div>
+        
+        <div class="info-box">
+            <h3>🎯 What You'll Learn</h3>
+            <p>This introductory course covers Python basics including printing, variables, strings, conditional statements, loops, and functions. Complete 6 hands-on exercises in approximately 20 minutes.</p>
+        </div>
+        
+        <h2 style="margin: 40px 0 20px; color: #333;">Choose Your Language</h2>
+        
+        <div class="language-selector">
+            <a href="python-basics-en.html" class="lang-card">
+                <div class="lang-flag">🇬🇧</div>
+                <div class="lang-name">English</div>
+            </a>
+            <a href="python-basics-fr.html" class="lang-card">
+                <div class="lang-flag">🇫🇷</div>
+                <div class="lang-name">Français</div>
+            </a>
+        </div>
     </div>
-
-    <textarea id="codeArea" spellcheck="false"></textarea>
-
-    <div class="row" style="justify-content: space-between; margin-top: 10px;">
-      <div class="muted">Output</div>
-      <div class="tiny" id="checkResult"></div>
-    </div>
-    <pre id="outputArea">Loading…</pre>
-
-    <div class="tiny" style="margin-top: 10px;">
-      If you see an error, read the last line first. Most beginner errors are missing quotes, missing colons, or indentation.
-    </div>
-  </section>
-</div>
-
-<script>
-  // -----------------------------
-  // Exercises (20-min set)
-  // -----------------------------
-  const EXERCISES = [
-    {
-      id: "ex1",
-      title: "Exercise 1: Print a welcome line",
-      goal: "Goal: Print exactly: Hello, Python!",
-      starter: `# Print exactly: Hello, Python!\n\n`,
-      solution: `print("Hello, Python!")\n`,
-      testPy: `
-expected = "Hello, Python!\\n"
-passed = (stdout == expected)
-msg = "Expected exactly: Hello, Python!"`,
-    },
-    {
-      id: "ex2",
-      title: "Exercise 2: Variables and arithmetic",
-      goal: "Goal: Create two variables a=7 and b=5, then print their sum (12).",
-      starter: `# Create a=7, b=5, then print a+b\n\n`,
-      solution: `a = 7\nb = 5\nprint(a + b)\n`,
-      testPy: `
-expected = "12\\n"
-passed = (stdout == expected)
-msg = "Expected output: 12"`,
-    },
-    {
-      id: "ex3",
-      title: "Exercise 3: Strings",
-      goal: "Goal: Create name = \"Amir\" then print: Welcome Amir",
-      starter: `# Create name = "Amir"\n# Then print: Welcome Amir\n\n`,
-      solution: `name = "Amir"\nprint("Welcome " + name)\n`,
-      testPy: `
-expected = "Welcome Amir\\n"
-passed = (stdout == expected)
-msg = "Expected output: Welcome Amir"`,
-    },
-    {
-      id: "ex4",
-      title: "Exercise 4: If statement",
-      goal: "Goal: If score >= 60 print PASS else print FAIL. Use score = 75.",
-      starter: `# Use score = 75\n# If score >= 60 print PASS else print FAIL\n\nscore = 75\n`,
-      solution: `score = 75\nif score >= 60:\n    print("PASS")\nelse:\n    print("FAIL")\n`,
-      testPy: `
-expected = "PASS\\n"
-passed = (stdout == expected)
-msg = "Expected output: PASS"`,
-    },
-    {
-      id: "ex5",
-      title: "Exercise 5: For loop",
-      goal: "Goal: Print numbers 1 to 5, each on its own line.",
-      starter: `# Print 1,2,3,4,5 each on a new line\n\n`,
-      solution: `for i in range(1, 6):\n    print(i)\n`,
-      testPy: `
-expected = "1\\n2\\n3\\n4\\n5\\n"
-passed = (stdout == expected)
-msg = "Expected five lines: 1 through 5"`,
-    },
-    {
-      id: "ex6",
-      title: "Exercise 6: Function",
-      goal: "Goal: Write a function add(a,b) that returns a+b, then print add(3,4).",
-      starter: `# Define add(a,b) that returns a+b\n# Then print add(3,4)\n\n`,
-      solution: `def add(a, b):\n    return a + b\n\nprint(add(3, 4))\n`,
-      testPy: `
-expected = "7\\n"
-passed = (stdout == expected)
-msg = "Expected output: 7"`,
-    },
-  ];
-
-  let pyodide = null;
-  let currentIdx = 0;
-  let passedChecks = 0;
-
-  const el = (id) => document.getElementById(id);
-
-  function setStatus(html) { el("pyStatus").innerHTML = html; }
-  function setOutput(text) { el("outputArea").textContent = text; }
-  function setCheck(text, ok=null) {
-    if (ok === true) el("checkResult").innerHTML = `<span class="ok">${text}</span>`;
-    else if (ok === false) el("checkResult").innerHTML = `<span class="bad">${text}</span>`;
-    else el("checkResult").textContent = text;
-  }
-
-  function populateExercises() {
-    const sel = el("exerciseSelect");
-    sel.innerHTML = "";
-    EXERCISES.forEach((ex, i) => {
-      const opt = document.createElement("option");
-      opt.value = String(i);
-      opt.textContent = `${i+1}. ${ex.title.replace("Exercise " + (i+1) + ": ", "")}`;
-      sel.appendChild(opt);
-    });
-  }
-
-  function loadExercise(idx, fromReset=false) {
-    currentIdx = idx;
-    const ex = EXERCISES[idx];
-    el("exerciseSelect").value = String(idx);
-    el("exerciseTitle").textContent = ex.title;
-    el("exerciseGoal").textContent = ex.goal;
-    el("kpiExercise").textContent = `Exercise: ${idx+1}/${EXERCISES.length}`;
-    if (!fromReset) {
-      el("codeArea").value = ex.starter;
-      setOutput("");
-      setCheck("");
-    }
-  }
-
-  function resetToStarter() {
-    const ex = EXERCISES[currentIdx];
-    el("codeArea").value = ex.starter;
-    setOutput("");
-    setCheck("");
-  }
-
-  function revealSolution() {
-    const ex = EXERCISES[currentIdx];
-    el("codeArea").value = ex.solution;
-  }
-
-  async function runUserCode(code) {
-    // Runs code and captures stdout + traceback. Returns {stdout, stderr}
-    const wrapper = `
-import sys, io, traceback
-_user_stdout = io.StringIO()
-_user_stderr = io.StringIO()
-_old_out, _old_err = sys.stdout, sys.stderr
-sys.stdout, sys.stderr = _user_stdout, _user_stderr
-_ns = {}
-try:
-    exec(user_code, _ns, _ns)
-except Exception:
-    traceback.print_exc()
-finally:
-    sys.stdout, sys.stderr = _old_out, _old_err
-stdout = _user_stdout.getvalue()
-stderr = _user_stderr.getvalue()
-`;
-    pyodide.globals.set("user_code", code);
-    await pyodide.runPythonAsync(wrapper);
-    const stdout = pyodide.globals.get("stdout");
-    const stderr = pyodide.globals.get("stderr");
-    return { stdout, stderr };
-  }
-
-  async function runButton() {
-    setCheck("");
-    setOutput("Running…");
-    const code = el("codeArea").value;
-    const { stdout, stderr } = await runUserCode(code);
-    const out = (stdout || "") + (stderr ? "\n" + stderr : "");
-    setOutput(out.trim() ? out : "(no output)");
-  }
-
-  async function checkButton() {
-    setCheck("Checking…");
-    const ex = EXERCISES[currentIdx];
-    const code = el("codeArea").value;
-
-    const { stdout, stderr } = await runUserCode(code);
-    if (stderr && stderr.trim().length > 0) {
-      setOutput(((stdout||"") + "\n" + stderr).trim());
-      setCheck("Fix the error first, then check again.", false);
-      return;
-    }
-
-    // Test logic uses stdout only for these beginner tasks
-    const testWrapper = `
-stdout = ${JSON.stringify("")}
-passed = False
-msg = ""
-# Inject captured stdout from the previous run:
-stdout = captured_stdout
-${ex.testPy}
-`;
-    pyodide.globals.set("captured_stdout", stdout);
-    await pyodide.runPythonAsync(testWrapper);
-    const passed = pyodide.globals.get("passed");
-    const msg = pyodide.globals.get("msg");
-
-    if (passed) {
-      passedChecks += 1;
-      el("kpiScore").textContent = `Checks passed: ${passedChecks}`;
-      setCheck("Correct.", true);
-    } else {
-      setCheck(msg || "Not correct yet.", false);
-    }
-  }
-
-  async function initPyodide() {
-    setStatus(`<span class="pill">Loading Python…</span>`);
-    setOutput("Loading Python runtime…");
-    pyodide = await loadPyodide();
-    setStatus(`<span class="pill">Ready</span> <span class="muted">Python in browser (Pyodide)</span>`);
-    setOutput("Ready. Choose an exercise, load starter code, then Run.");
-
-    // Enable buttons
-    el("btnRun").disabled = false;
-    el("btnCheck").disabled = false;
-    el("btnReset").disabled = false;
-  }
-
-  // MCQ
-  function checkMCQ() {
-    const picked = [...document.querySelectorAll('input[name="q1"]')].find(r => r.checked)?.value;
-    if (!picked) { el("mcqResult").textContent = "Select an option."; return; }
-    el("mcqResult").innerHTML = (picked === "b")
-      ? `<span class="ok">Correct.</span> range(3) gives 0, 1, 2.`
-      : `<span class="bad">Not correct.</span> In Python, range(3) gives 0, 1, 2.`;
-  }
-
-  // Wire up events
-  populateExercises();
-  loadExercise(0);
-
-  el("exerciseSelect").addEventListener("change", (e) => loadExercise(Number(e.target.value)));
-  el("btnLoad").addEventListener("click", () => { el("codeArea").value = EXERCISES[currentIdx].starter; setOutput(""); setCheck(""); });
-  el("btnReveal").addEventListener("click", revealSolution);
-
-  el("btnRun").addEventListener("click", runButton);
-  el("btnCheck").addEventListener("click", checkButton);
-  el("btnReset").addEventListener("click", resetToStarter);
-
-  el("btnMCQ").addEventListener("click", checkMCQ);
-
-  // Start
-  initPyodide();
-</script>
 </body>
 </html>
