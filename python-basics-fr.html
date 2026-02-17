@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pratique des Bases Python - Plateforme d'Apprentissage Adaptatif</title>
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      margin: 0; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #111; 
+    }
+    header { 
+      background: white;
+      padding: 24px 28px; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header h1 { 
+      margin: 0 0 8px; 
+      font-size: 24px; 
+      color: #667eea;
+      font-weight: 700;
+    }
+    header p { 
+      margin: 0; 
+      font-size: 14px; 
+      color: #555; 
+    }
+    .wrap { 
+      display: grid; 
+      grid-template-columns: 380px 1fr; 
+      gap: 20px; 
+      padding: 20px 28px; 
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    .card { 
+      background: white;
+      border-radius: 16px; 
+      padding: 20px; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .nav-btn {
+      background: #f8f9fa;
+      border: 2px solid #e0e0e0;
+      color: #333;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .nav-btn:hover {
+      background: white;
+      border-color: #667eea;
+      color: #667eea;
+    }
+    @media (max-width: 1024px) {
+      .wrap { 
+        grid-template-columns: 1fr; 
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+</head>
+
+<body>
+<header>
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <h1>🐍 Fondamentaux Python : Pratique des Bases</h1>
+      <p>Apprentissage interactif avec rétroaction instantanée • Durée estimée : 20 minutes</p>
+    </div>
+    <a href="index.html" class="nav-btn">← Retour à l'accueil</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="card">
+    <h2>Bienvenue!</h2>
+    <p>Cette page sera complétée avec 6 exercices interactifs Python.</p>
+  </section>
+</div>
+
+</body>
+</html>
