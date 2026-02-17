@@ -1,201 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adaptive Learning Platform - Python</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 900px;
-            width: 100%;
-            padding: 60px 40px;
-            text-align: center;
-        }
-        
-        .logo {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
-        
-        h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .subtitle {
-            color: #666;
-            font-size: 1.2em;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-            text-align: left;
-        }
-        
-        .feature {
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .feature-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        
-        .feature h3 {
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 1.1em;
-        }
-        
-        .feature p {
-            color: #666;
-            font-size: 0.95em;
-            line-height: 1.5;
-        }
-        
-        .language-selector {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-        
-        .lang-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px 50px;
-            border-radius: 15px;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            min-width: 200px;
-        }
-        
-        .lang-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.6);
-        }
-        
-        .lang-flag {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-        
-        .lang-name {
-            font-size: 1.3em;
-            font-weight: 600;
-        }
-        
-        .info-box {
-            background: #e8f4f8;
-            border-left: 4px solid #3498db;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 8px;
-            text-align: left;
-        }
-        
-        .info-box h3 {
-            color: #2980b9;
-            margin-bottom: 10px;
-        }
-        
-        .info-box p {
-            color: #555;
-            line-height: 1.6;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .container {
-                padding: 40px 25px;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="logo">🐍</div>
-        <h1>Adaptive Learning Platform</h1>
-        <p class="subtitle">Master Python Programming at Your Own Pace<br>Interactive exercises with instant feedback</p>
-        
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">💻</div>
-                <h3>Interactive Coding</h3>
-                <p>Write and execute Python code directly in your browser</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">✅</div>
-                <h3>Instant Feedback</h3>
-                <p>Get immediate validation on your solutions</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📚</div>
-                <h3>Structured Learning</h3>
-                <p>Progress through carefully designed exercises</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🌍</div>
-                <h3>Multi-Language</h3>
-                <p>Available in English and French</p>
-            </div>
-        </div>
-        
-        <div class="info-box">
-            <h3>🎯 What You'll Learn</h3>
-            <p>This introductory course covers Python basics including printing, variables, strings, conditional statements, loops, and functions. Complete 6 hands-on exercises in approximately 20 minutes.</p>
-        </div>
-        
-        <h2 style="margin: 40px 0 20px; color: #333;">Choose Your Language</h2>
-        
-        <div class="language-selector">
-            <a href="python-basics-en.html" class="lang-card">
-                <div class="lang-flag">🇬🇧</div>
-                <div class="lang-name">English</div>
-            </a>
-            <a href="python-basics-fr.html" class="lang-card">
-                <div class="lang-flag">🇫🇷</div>
-                <div class="lang-name">Français</div>
-            </a>
-        </div>
-    </div>
-</body>
-</html>
+Python Foundations 1: Basics Practice (20 minutes)
+Read the mini-lesson, then complete short coding tasks. Use Run to execute code and Check to validate your answer.
+Environment
+Loading Python…
+Exercise: 1/6
+Checks passed: 0
+Mini-lesson (read in ~10 minutes)
+1) Printing Use print() to show output.
+2) Variables Assign with =. Example: x = 3
+3) Strings Text is in quotes: "hello". Combine with +.
+4) If statements if condition: then indented code runs.
+5) Loops for i in range(5): runs 5 times (0 to 4).
+6) Functions Define reusable logic: def add(a,b): return a+b
+Tip: Python cares about indentation. Use 4 spaces.
+Choose exercise
+Exercise
+
+Load starter code
+Reveal solution
+This practice page is for learning. It is not graded.
+Optional: quick self-check (multiple choice)
+Q1. What does range(3) produce in a loop?
+1, 2, 3
+0, 1, 2
+0, 1, 2, 3
+Check MCQ
+
+Code editor
+
+Run
+Check
+Reset
+Output
+
+Loading…
+If you see an error, read the last line first. Most beginner errors are missing quotes, missing colons, or indentation.
