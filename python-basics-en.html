@@ -3,35 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Basics Practice - English</title>
+    <title>Enhanced Python Learning Platform</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #a8e0f8, #c5d9e4);
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        h1 {
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            color: white;
             text-align: center;
-            color: #005f73;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+        }
+        .exercise {
+            margin: 20px 0;
         }
         button {
-            background-color: #005f73;
-            color: white;
+            background-color: #4CAF50;
             border: none;
+            color: white;
             padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            border-radius: 5px;
         }
-        button:hover {
-            background-color: #0a9396;
+        header, footer {
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-    <h1>Python Basics Practice</h1>
-    <p>Welcome to the Python basics practice page. Here you can improve your coding skills through interactive exercises.</p>
-    <button>Start Practice</button>
+    <header>
+        <h1>Welcome to the Enhanced Python Learning Platform</h1>
+        <nav>
+            <a href="#home" style="color: white;">Home</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Mini Lessons</h2>
+            <p>Learn Python with interactive lessons designed for everyone!</p>
+        </section>
+        <section>
+            <h2>Interactive Exercises</h2>
+            <div class="exercise">
+                <h3>Exercise 1: Basics of Python</h3>
+                <div id="editor1"></div>
+                <button onclick="validate('editor1')">Check Solution</button>
+            </div>
+            <div class="exercise">
+                <h3>Exercise 2: Data Structures</h3>
+                <div id="editor2"></div>
+                <button onclick="validate('editor2')">Check Solution</button>
+            </div>
+            <div class="exercise">
+                <h3>Exercise 3: Control Flow</h3>
+                <div id="editor3"></div>
+                <button onclick="validate('editor3')">Check Solution</button>
+            </div>
+            <div class="exercise">
+                <h3>Exercise 4: Functions</h3>
+                <div id="editor4"></div>
+                <button onclick="validate('editor4')">Check Solution</button>
+            </div>
+            <div class="exercise">
+                <h3>Exercise 5: Modules and Packages</h3>
+                <div id="editor5"></div>
+                <button onclick="validate('editor5')">Check Solution</button>
+            </div>
+            <div class="exercise">
+                <h3>Exercise 6: Object-Oriented Programming</h3>
+                <div id="editor6"></div>
+                <button onclick="validate('editor6')">Check Solution</button>
+            </div>
+        </section>
+        <section>
+            <h2>Pyodide Integration</h2>
+            <p>Run your Python code directly in the browser with Pyodide!</p>
+        </section>
+        <section>
+            <h2>Instant Validation</h2>
+            <p>Check your solutions immediately with our validation tools!</p>
+        </section>
+    </div>
+    <footer>
+        <p>© 2026 Enhanced Python Learning Platform</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/pyodide.js"></script>
+    <script>
+        async function validate(editorId) {
+            const code = document.getElementById(editorId).value;
+            // Validate code logic goes here...
+        }
+    </script>
 </body>
 </html>
